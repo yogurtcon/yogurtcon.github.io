@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>跳动爱心</title>
+    <style>
+        body {
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .heart {
+            position: relative;
+            width: 200px;
+            height: 180px;
+            animation: beat 1.2s infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 0, 0, 0.9));
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 160px;
+            background: #ff0000;
+            border-radius: 100px 100px 0 0;
+        }
+
+        .heart::before {
+            left: 100px;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes beat {
+            0% { transform: scale(1); }
+            15% { transform: scale(1.2); }
+            30% { transform: scale(0.95); }
+            45% { transform: scale(1.1); }
+            60% { transform: scale(1); }
+            100% { transform: scale(1); }
+        }
+
+        /* 背景星光效果 */
+        body::after {
+            content: '';
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            right: -50%;
+            bottom: -50%;
+            background: 
+                linear-gradient(transparent 60%, rgba(255,255,255,0.1) 60%),
+                linear-gradient(90deg, transparent 60%, rgba(255,255,255,0.1) 60%);
+            background-size: 4px 4px;
+            animation: stars 40s linear infinite;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        @keyframes stars {
+            from { transform: translateY(0); }
+            to { transform: translateY(-100px); }
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .name {
+            color: #fff;
+            font-family: 'Great Vibes', cursive;
+            font-size: 5em;
+            text-shadow: 0 0 25px rgba(255, 60, 60, 0.9),
+                         0 0 40px rgba(255, 100, 100, 0.7),
+                         0 0 55px rgba(255, 150, 150, 0.5);
+            animation: float 2s ease-in-out infinite,
+                       glow 1.5s ease-in-out infinite alternate;
+            letter-spacing: 4px;
+            position: relative;
+            transform: rotate(-5deg);
+            margin-top: 100px;
+        }
+
+        @keyframes float {
+            0% { transform: rotate(-5deg) translateY(0) scale(1); }
+            50% { transform: rotate(-5deg) translateY(-15px) scale(1.1); }
+            100% { transform: rotate(-5deg) translateY(0) scale(1); }
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 15px rgba(255, 0, 0, 0.8),
+                             0 0 25px rgba(255, 100, 100, 0.6);
+            }
+            to {
+                text-shadow: 0 0 25px rgba(255, 50, 50, 1),
+                             0 0 35px rgba(255, 150, 150, 0.8);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heart"></div>
+        <div class="name">🐑🩷🐼</div>
+    </div>
+    
+    <!-- 谷歌字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+</body>
+</html> 
